@@ -24,6 +24,12 @@ async function route(tagname) {
   return translated.toLowerCase();
 }
 async function reply(ctx) {
+  await memory.addUser(ctx.from);
+  let settings = await memory.getSettings(ctx.from.id);
+  if (!settings) {
+    await memory.updateSettings(ctx.from.id);
+    settings = await memory.getSettings(ctx.from.id);
+  }
   console.log("entered illustByLink");
   await pixiv.login();
   async function processingQueue(queue) {
