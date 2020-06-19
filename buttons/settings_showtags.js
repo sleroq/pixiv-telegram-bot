@@ -17,5 +17,7 @@ module.exports.showtags = async function (ctx) {
         },
       ],
     ],
+  }).catch(err=>{
+    console.log(err)
   });
 };

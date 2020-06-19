@@ -14,5 +14,7 @@ module.exports.translate = async function (ctx) {
           { text: getTranslateTagsText(settings), callback_data: "translatetags" }
         ]
       ]
+    }).catch(err=>{
+      console.log(err)
     });
 };

@@ -2,7 +2,6 @@ const memory = require("../database/data_work.js");
 const { getTranslateTagsText, getshowTagsText } = require("../someFuncs.js");
 
 module.exports.to_ru = async function (ctx) {
-  await ctx.reply();
   let settings = await memory.getSettings(ctx.from.id);
   await ctx.editMessageText(
     `Отправь мне ссылкy на иллюстрацию с Pixiv\nНапример: \`https://pixiv.net/en/artworks/73711661\`\nТы можешь отправлять несколько ссылок одним сообщением\nОткрыть настройки - /settings`,
@@ -30,5 +29,7 @@ module.exports.to_ru = async function (ctx) {
         ],
       },
     }
-  );
+  ).catch(err=>{
+    console.log(err)
+  });
 };

@@ -5,7 +5,9 @@ const { translate } = require("./settings_translate.js");
 
 
 module.exports.cb_query = async function (ctx) {
-  await ctx.answerCbQuery();
+  await ctx.answerCbQuery().catch(err=>{
+    console.log(err)
+  });
   let query_data = ctx.update.callback_query.data;
   console.log(query_data);
 
@@ -15,7 +17,7 @@ module.exports.cb_query = async function (ctx) {
     await to_en(ctx);
   } else if (query_data == "showtags"){
     await showtags(ctx);
-  } else if (query_data == "translate"){
+  } else if (query_data == "translatetags"){
     await translate(ctx);
   }
 };
