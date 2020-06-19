@@ -9,13 +9,13 @@ module.exports.cb_query = async function (ctx) {
   let query_data = ctx.update.callback_query.data;
   console.log(query_data);
 
-  if (query_data[0] == "ru") {
+  if (query_data == "ru") {
     await to_ru(ctx);
-  } else if (query_data[0] == "en") {
+  } else if (query_data == "en") {
     await to_en(ctx);
-  } else if (query_data[0] == "showtags"){
+  } else if (query_data == "showtags"){
     await showtags(ctx);
-  } else if (query_data[0] == "translate"){
+  } else if (query_data == "translate"){
     await translate(ctx);
   }
 };

@@ -7,17 +7,17 @@ db.prepare(
     fromu TEXT,
     stage TEXT,
     settings TEXT
-);`
+    );`
 ).run();
 
-// const stmt3 = db.prepare(`DROP TABLE posts`).run()
+// const stmt3 = db.prepare(`DROP TABLE users`).run()
 db.prepare(
   `CREATE TABLE IF NOT EXISTS posts (
     user_id INT,
     info INT,
     time INT,
     message_id TEXT
-);`
+    );`
 ).run();
 
 db.prepare(
@@ -25,13 +25,12 @@ db.prepare(
     user_id INTEGER NOT NULL,
     link TEXT NOT NULL,
     time INT NOT NULL
-);`
+    );`
 ).run();
 async function deleteQ() {
   const stmt3 = await db
     .prepare(
-      `DROP TABLE queue
-`
+      `DROP TABLE queue`
     )
     .run();
   await db
@@ -40,9 +39,8 @@ async function deleteQ() {
     user_id INTEGER NOT NULL,
     link TEXT NOT NULL,
     time INT NOT NULL
-);`
-    )
-    .run();
+    );`
+  ).run();
 }
 
 async function addToQueue(uid, link, time) {
@@ -63,7 +61,6 @@ async function addToQueue(uid, link, time) {
   );
 }
 async function getNextQueue() {
-  let getQueueWithoutSort = await db.prepare(`SELECT * FROM queue`).all();
   let getQueue = await db
     .prepare(`SELECT * FROM queue ORDER BY time DESC`)
     .all();
@@ -75,7 +72,7 @@ async function deleteFromQueue(uid, link) {
     await db
       .prepare(
         `DELETE FROM queue
-WHERE user_id = ?`
+        WHERE user_id = ?`
       )
       .run(uid, link);
     console.log(uid + "'s links - dropped from queue  ");
@@ -83,44 +80,12 @@ WHERE user_id = ?`
     await db
       .prepare(
         `DELETE FROM queue
-WHERE user_id = ? AND
-link = ?`
+        WHERE user_id = ? AND
+        link = ?`
       )
       .run(uid, link);
     console.log("link: " + link + " - dropped from queue  ");
   }
-}
-
-async function savePost(uid, info, time) {
-  //console.log(info);
-  await db
-    .prepare(
-      `INSERT OR IGNORE INTO posts
-(user_id, info, time) VALUES (?, ?, ?);`
-    )
-    .run(uid, info, time);
-  console.log("saved post");
-  console.log(info);
-  console.log(time);
-}
-async function getPost(uid) {
-  // console.log('get post')
-  // console.log(uid)
-  let getPost = await db
-    .prepare(`SELECT info, time FROM posts WHERE user_id = ? ORDER BY time ASC`)
-    .all(uid);
-
-  getPost.sort(function(a, b) {
-    return a.time - b.time;
-  });
-  //console.log(getPost)
-  console.log("getted post");
-  console.log(getPost[getPost.length - 1].info);
-  console.log(getPost[getPost.length - 1].time);
-  console.log("getted post");
-  console.log(getPost[0].info);
-  console.log(getPost[0].time);
-  return getPost[getPost.length - 1].info;
 }
 
 // getPost(308552322)
@@ -130,7 +95,7 @@ async function addUser(from) {
   await db
     .prepare(
       `INSERT OR IGNORE INTO users
-(user_id, fromu, stage) VALUES (?, ?, ?);`
+      (user_id, fromu, stage) VALUES (?, ?, ?);`
     )
     .run(uid, fromString, 0);
 }
@@ -138,8 +103,8 @@ async function updateStage(uid, stage) {
   await db
     .prepare(
       `UPDATE users SET
-stage = ${stage}
-WHERE user_id=?`
+      stage = ${stage}
+      WHERE user_id=?`
     )
     .run(uid);
 }
@@ -147,7 +112,7 @@ async function listUsers() {
   let count = await db.prepare(`SELECT COUNT(user_id) FROM users`).get();
   let list = await db.prepare(`SELECT * FROM users`).all();
   let usersstring = count["COUNT(user_id)"] + " users:";
-  list.map(user => {
+  list.map((user) => {
     let fromU = JSON.parse(user.fromu);
     usersstring +=
       "\n[" +
@@ -177,6 +142,7 @@ async function getStage(uid) {
     return getStage.stage;
   } else return;
 }
+
 async function updateSettings(uid, settingName, setting) {
   if (settingName) {
     let settings = await getSettings(uid);
@@ -198,24 +164,14 @@ async function updateSettings(uid, settingName, setting) {
         }
         break;
     }
-    // console.log('new settings')
-    // console.log(settings)
     let updatedSettings = JSON.stringify(settings);
     await db
-      .prepare(
-        `UPDATE users SET
-settings = ?
-WHERE user_id=?`
-      )
+      .prepare(`UPDATE users SET settings = ? WHERE user_id=?`)
       .run(updatedSettings, uid);
   } else {
     let settings = '{"showtag": 1, "tagtranslate": 1}';
     await db
-      .prepare(
-        `UPDATE users SET
-settings = ?
-WHERE user_id=?`
-      )
+      .prepare(`UPDATE users SET settings = ? WHERE user_id=?`)
       .run(settings, uid);
   }
 }
@@ -240,5 +196,5 @@ module.exports = {
   addToQueue,
   updateSettings,
   getSettings,
-  deleteQ
+  deleteQ,
 };
