@@ -1,25 +1,5 @@
-require("dotenv").config();
 
-const { Telegraf } = require("telegraf");
-const bot = new Telegraf(process.env.TOKEN);
-
-let webhook = true;
-if (process.env.ON_HEROKU) {
-  bot.telegram.setWebhook(process.env.HEROKU_URL);
-} else if (process.env.ON_GLITCH) {
-  console.log(process.env.GLITCH_URL);
-  bot.telegram.setWebhook(process.env.GLITCH_URL);
-} else {
-  webhook = false;
-}
-
-const express = require("express");
-const expressApp = express();
-if (webhook) {
-  expressApp.use(bot.webhookCallback("/secret-path"));
-}
 const getUrls = require("get-urls");
-const fetch = require("node-fetch");
 
 const pixivImg = require("pixiv-img");
 const fs = require("fs");
@@ -117,17 +97,3 @@ bot.on("text", async (ctx) => {
     }
   }
 });
-
-if (webhook) {
-  const PORT = process.env.PORT || 3000;
-  expressApp.get("/", (req, res) => {
-    res.send("Hello, love <3");
-  });
-  expressApp.listen(PORT, () => {
-    console.log(`Our app is running on port ${PORT}`);
-  });
-} else {
-  bot.telegram.deleteWebhook().then(() => {
-    bot.launch();
-  });
-}
