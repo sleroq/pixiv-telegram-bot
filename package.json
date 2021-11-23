@@ -4,7 +4,10 @@
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "buiserver.js",
   "scripts": {
-    "start": "node built/index"
+    "build": "tsc --build tsconfig.json",
+    "start": "node built/index",
+    "lint": "npx eslint .",
+    "format": "npx eslint --fix ."
   },
   "dependencies": {
     "better-sqlite3": "^7.1.0",
