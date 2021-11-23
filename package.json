@@ -19,7 +19,6 @@
     "https-proxy-agent": "^5.0.0",
     "image-size": "^0.8.3",
     "moment": "^2.27.0",
-    "node-fetch": "^2.6.0",
     "pixiv-app-api": "^1.0.4",
     "pixiv-img": "^1.0.0",
     "telegraf": "^3.36.0",
