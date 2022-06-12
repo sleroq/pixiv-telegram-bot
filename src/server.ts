@@ -1,5 +1,5 @@
 import express from 'express'
-import { Bot, webhookCallback } from 'grammy'
+import {Bot, webhookCallback} from 'grammy'
 
 export default async function setWebhook(bot: Bot, urlForWebhook: string): Promise<void> {
 	const server = express()
@@ -15,6 +15,6 @@ export default async function setWebhook(bot: Bot, urlForWebhook: string): Promi
 
 	// Set webhook for handler in Bot API
 	await bot.api.setWebhook(webhookURL.toString(), {
-		drop_pending_updates: true
+		drop_pending_updates: true,
 	})
 }

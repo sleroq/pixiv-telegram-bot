@@ -10,7 +10,7 @@ if (!token) {
 	throw new Werror('Bot token not specified')
 }
 
-void (async() => {
+void (async () => {
 	// try {
 	// 	await connectToSQL()
 	// } catch (error) {
@@ -35,7 +35,7 @@ void (async() => {
 	} else {
 		console.log('Url for webhook not specified, starting polling')
 		void bot.start({
-			drop_pending_updates: true
+			drop_pending_updates: true,
 		})
 	}
 })()

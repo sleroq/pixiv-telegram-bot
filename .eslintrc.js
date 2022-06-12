@@ -1,13 +1,13 @@
 module.exports = {
 	env: {
 		browser: true,
-		es2021:  true,
-		node:    true
+		es2021: true,
+		node: true,
 	},
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		tsconfigRootDir: __dirname,
-		project: ['./tsconfig.json']
+		project: ['./tsconfig.json'],
 	},
 	plugins: [
 		'@typescript-eslint',
@@ -15,30 +15,33 @@ module.exports = {
 	extends: [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
-		'plugin:@typescript-eslint/recommended-requiring-type-checking'
+		'plugin:@typescript-eslint/recommended-requiring-type-checking',
+		'google',
 	],
 	rules: {
 		indent: [
 			'error',
-			'tab'
+			'tab',
 		],
 		'linebreak-style': [
 			'error',
-			'unix'
+			'unix',
 		],
 		quotes: [
 			'error',
-			'single'
+			'single',
 		],
 		semi: [
 			'error',
-			'never'
+			'never',
 		],
 		'quote-props': [
 			'error',
-			'as-needed'
+			'as-needed',
 		],
 		'no-trailing-spaces': 'warn',
-		'@typescript-eslint/require-await': 'warn'
-	}
+		'no-tabs': ['error', {allowIndentationTabs: true}],
+		'@typescript-eslint/require-await': 'warn',
+
+	},
 }
