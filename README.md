@@ -11,7 +11,7 @@ Bot can download artworks from pixiv.net - [@pixiv_slbot](https://t.me/pixiv_slb
 # Run
 
 clone:
-`git clone git@github.com:sleroq/pixiv-telegram-bot.git && cd pixiv-telegram-bot`
+`git clone https://github.com/sleroq/pixiv-telegram-bot.git`
 
 install dependencies
 `yarn i`
