@@ -26,6 +26,14 @@ module.exports = {
 		'no-tabs': ['error', { allowIndentationTabs: true }],
 		'object-curly-spacing': ['error', 'always'],
 		'@typescript-eslint/require-await': 'warn',
+		'space-before-function-paren': [
+			'error',
+			{
+				anonymous: 'always',
+				named: 'never',
+				asyncArrow: 'always',
+			},
+		],
 		'require-jsdoc': 0,
 	},
 }
