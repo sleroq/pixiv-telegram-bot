@@ -1,9 +1,10 @@
 import express from 'express'
 import { Bot, webhookCallback } from 'grammy'
+import { MyContext } from './bot/index.js'
 
 export default async function setWebhook(
-	bot: Bot,
-	urlForWebhook: string
+	bot: Bot<MyContext>,
+	urlForWebhook: string,
 ): Promise<void> {
 	const server = express()
 	// Register a handler for the bot
