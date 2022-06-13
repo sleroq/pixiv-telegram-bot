@@ -10,3 +10,6 @@ built/*
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Logs
+*.log
