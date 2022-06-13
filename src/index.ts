@@ -1,6 +1,6 @@
 import 'dotenv/config'
-import { pino } from 'pino'
 import Werror from './lib/errors.js'
+import logger from './lib/logger.js'
 
 import initBot from './bot/index.js'
 import setWebhook from './server.js'
@@ -9,8 +9,6 @@ const token = process.env['BOT_TOKEN']
 if (!token) {
 	throw new Werror('Bot token not specified')
 }
-
-const logger = pino()
 
 let bot
 try {
