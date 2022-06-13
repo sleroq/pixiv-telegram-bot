@@ -6,7 +6,7 @@
 		"node": "16.x"
 	},
 	"scripts": {
-		"serve": "npx nodemon -e js,ts --watch src --exec \"yarn build && yarn start\"",
+		"serve": "npx nodemon -e js,ts,ftl --watch src --watch locales --exec \"yarn build && yarn start\"",
 		"build": "tsc --build tsconfig.json",
 		"start": "node built/index",
 		"lint": "npx eslint . && npx prettier -c .",
@@ -18,14 +18,11 @@
 	"exports": "./built/index.js",
 	"type": "module",
 	"licence": "GPL-2.0-or-later",
-	"keywords": [
-		"pixiv",
-		"telegram",
-		"bot"
-	],
+	"keywords": ["pixiv", "telegram", "bot"],
 	"dependencies": {
-		"@fluent/bundle": "^0.17.1",
+		"@grammyjs/fluent": "^1.0.3",
 		"@grammyjs/parse-mode": "^1.1.2",
+		"@moebius/fluent": "^1.1.0",
 		"dotenv": "^16.0.1",
 		"express": "^4.18.1",
 		"grammy": "^1.8.3",

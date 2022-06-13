@@ -29,10 +29,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fluent/langneg@npm:^0.6.1":
+  version: 0.6.2
+  resolution: "@fluent/langneg@npm:0.6.2"
+  checksum: fc6567d51541aac064180df8c8d34f2d8909a720e7d349b6b640139dcda880da47e277c85b122c20398897cd610b02bd544b015e6eb7dff1cfdf07ddc65ed968
+  languageName: node
+  linkType: hard
+
 "@gar/promisify@npm:^1.1.3":
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
   checksum: 4059f790e2d07bf3c3ff3e0fec0daa8144fe35c1f6e0111c9921bd32106adaa97a4ab096ad7dab1e28ee6a9060083c4d1a4ada42a7f5f3f7a96b8812e2b757c1
+  languageName: node
+  linkType: hard
+
+"@grammyjs/fluent@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@grammyjs/fluent@npm:1.0.3"
+  peerDependencies:
+    "@moebius/fluent": ^1.0.0
+    grammy: ^1.5.0
+  checksum: cf6acd8632533f66420811bc00fc5e8dbd7be519a04bd39d16e0784a42b8c0b003595da950fcb50efd5b0e374be454fcb89dff6ee08bab27405eff5d116c47dd
   languageName: node
   linkType: hard
 
@@ -65,6 +82,16 @@ __metadata:
   version: 1.2.1
   resolution: "@humanwhocodes/object-schema@npm:1.2.1"
   checksum: a824a1ec31591231e4bad5787641f59e9633827d0a2eaae131a288d33c9ef0290bd16fda8da6f7c0fcb014147865d12118df10db57f27f41e20da92369fcb3f1
+  languageName: node
+  linkType: hard
+
+"@moebius/fluent@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@moebius/fluent@npm:1.1.0"
+  dependencies:
+    "@fluent/bundle": ^0.17.1
+    "@fluent/langneg": ^0.6.1
+  checksum: c14c05d83ad0e83041e493f77fd7c71da7bd60ff6fa7edbc345346377a8a8e1d73f574a5e382af7178e79ce53b12aea1c9e2bf855853322340e85670f31f6f5b
   languageName: node
   linkType: hard
 
@@ -3102,8 +3129,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pixiv-telegram-bot@workspace:."
   dependencies:
-    "@fluent/bundle": ^0.17.1
+    "@grammyjs/fluent": ^1.0.3
     "@grammyjs/parse-mode": ^1.1.2
+    "@moebius/fluent": ^1.1.0
     "@sindresorhus/tsconfig": ^3.0.1
     "@types/dotenv": ^8.2.0
     "@types/express": ^4.17.13
