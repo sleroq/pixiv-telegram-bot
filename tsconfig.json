@@ -1,7 +1,9 @@
 {
-	"extends": "@sindresorhus/tsconfig",
-	"compilerOptions": {
-		"outDir": "dist",
-		"target": "ES2021"
-	}
+  "extends": "@sindresorhus/tsconfig",
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "ES2021",
+    "outDir": "built"
+  },
+  "include": ["src/index.ts"]
 }
