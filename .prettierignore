@@ -1,6 +1,6 @@
 /**
 !src
-!.eslintrc.js
+!.eslintrc.cjs
 !.prettierrc.cjs
 !package.json
 !README.md
