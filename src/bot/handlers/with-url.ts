@@ -16,7 +16,7 @@ composer.on('message:entities:url', async (ctx) => {
 	ctx.message.entities.forEach((e) => {
 		if (e.type === 'url') {
 			const url = message.slice(e.offset, e.offset + e.length)
-			if (url.match(/pixiv.net\/.+artworks\/[0-9]+/gm)) {
+			if (url.match(/pixiv\.net.+artworks\/[0-9]+/gm)) {
 				urls.push(url)
 			}
 		}
