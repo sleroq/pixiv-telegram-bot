@@ -1,6 +1,6 @@
 # pixiv-telegram-bot
 
-Bot can download artworks from pixiv.net
+Bot can download artworks from pixiv.net - [@pixiv_slbot](https://t.me/pixiv_slbot)
 
 ## Why?
 
