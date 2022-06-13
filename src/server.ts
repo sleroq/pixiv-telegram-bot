@@ -3,7 +3,7 @@ import { Bot, webhookCallback } from 'grammy'
 
 export default async function setWebhook(
 	bot: Bot,
-	urlForWebhook: string,
+	urlForWebhook: string
 ): Promise<void> {
 	const server = express()
 	// Register a handler for the bot
