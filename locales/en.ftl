@@ -8,6 +8,8 @@ welcome =
 
     You can send multiple links in one message
 
+    <a href="https://github.com/sleroq/pixiv-telegram-bot">GitHub</a>
+
 found-bug =
     Found bug? - @sleroq
 
