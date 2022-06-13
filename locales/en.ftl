@@ -11,10 +11,8 @@ welcome =
 found-bug =
     Found bug? - @sleroq
 
-# Buttons
-
-settings-button =
-    Settings
+buttons =
+    .settings = Settings
 
 errors =
     .unknown        = {-error(t: "An error occurred.")}

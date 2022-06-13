@@ -14,7 +14,7 @@ composer.command('start', async (ctx) => {
 				],
 				[
 					{
-						text: ctx.t('settings-button'),
+						text: ctx.t('buttons.settings'),
 						callback_data: 'settings',
 					},
 				],
