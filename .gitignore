@@ -1,3 +1,15 @@
 .env
-*.db
-node_modules/
+node_modules
+built/*
+
+# Yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Logs
+*.log
