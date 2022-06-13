@@ -1,10 +1,11 @@
 import express from 'express'
-import {Bot, webhookCallback} from 'grammy'
+import { Bot, webhookCallback } from 'grammy'
 
-export default async function setWebhook(bot: Bot, urlForWebhook: string): Promise<void> {
+export default async function setWebhook(
+	bot: Bot,
+	urlForWebhook: string,
+): Promise<void> {
 	const server = express()
-	server.use(express.json())
-
 	// Register a handler for the bot
 	// eslint-disable-next-line @typescript-eslint/no-misused-promises
 	server.post('/webhook', webhookCallback(bot, 'express'))
